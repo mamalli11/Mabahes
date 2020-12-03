@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    table.table.table-striped.table-hover 
+      tr
+        th ID
+        th نام
+        th توضیحات
+        th مبلغ
+        th تصویر
+        th Weight
+
+      each n in prds
+        tr
+          td= n.id
+          td= n.Name
+          td= n.Description
+          td= n.Price
+          td 
+            img(src= n.Image style='width:80px; height:80px;')
+          td= n.Weight

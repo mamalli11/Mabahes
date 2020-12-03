@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    table.table.table-striped.table-hover 
+      tr
+        th ID
+        th نام
+        th شماره تلفن
+        th ایمیل
+        th آدرس
+      tr
+        td= user.id
+        td= user.Name
+        td= user.Phone
+        td= user.Email
+        td= user.Address

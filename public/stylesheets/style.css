@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Vazir";
+  src: url("../fonts/Vazir.eot");
+  src: local("../fonts/Vazir"), url("../fonts/Vazir.woff") format("woff"),
+    url("../fonts/Vazir.ttf") format("truetype"),
+
+}
+body {
+  direction: rtl;
+  font-family: "Vazir" !important;
+  font-size: 14px;
+  padding: 50px;
+}
+
+a {
+  color: #00b7ff;
+}
+code {
+  font-family: monospace !important;
+  font-size: 14px !important;
+}

@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  h1= title
+  p خوش آمدید به #{title}
+  hr
+  div.alert.alert-info
+    h5 ثبت کاربر جدید
+    p در برنامه postman ادرس و متد را مطابق مشخصات زیر وارد کنید و در قسمت body در postman کادر قرمز رنگ را وارد کرده و فیلد های خواسته شده را پرکنید
+    p Http Method = post
+    p URL = localhost:3000/users/register
+    code 
+      |{
+      |  "Name": "Ahmad",
+      |  "Phone": "09131112233",
+      |  "Email": "lotfizadeh.online@gmail.com",
+      |  "Address": "Iran - Isfahan",
+      |  "Password": "123456"
+      |}
+    img(src='/pics/userregister.png' style='height:300px;')
+   div.alert.alert-info
+    h5 ورود کاربر
+    p در برنامه postman ادرس و متد را مطابق مشخصات زیر وارد کنید و در قسمت body در postman کادر قرمز رنگ را وارد کرده و فیلد های خواسته شده را پرکنید
+    p Http Method = post
+    p URL = localhost:3000/users/register
+    code 
+      |{
+      |  "Email": "lotfizadeh.online@gmail.com",
+      |  "Password": "1234"
+      |}
+   div.alert.alert-info
+    h5 نمایش تمام کاربران
+    p آدرس زیر را در مرورگر وارد کنید
+    a(href='//localhost:3000/users') URL = localhost:3000/users
+   div.alert.alert-info
+    h5 پیدا کردن یک کاربر
+    p آدرس زیر را در مرورگر وارد کنید و در اخر لینک به جای id کد کاربر مورد نظر را وارد کنید
+    p URL = http://localhost:3000/users/user:id
+   div.alert.alert-info
+    h5 نمایش تمام محصولات
+    p آدرس زیر را در مرورگر وارد کنید
+    a(href='//localhost:3000/prds') URL = localhost:3000/prds
+  div.alert.alert-info
+    h5 ثبت محصول جدید جدید
+    p در برنامه postman ادرس و متد را مطابق مشخصات زیر وارد کنید و در قسمت body در postman کادر قرمز رنگ را وارد کرده و فیلد های خواسته شده را پرکنید
+    p Http Method = post
+    p URL = localhost:3000/prds
+    img(src='/pics/newprd.png' style='height:300px;')
+  div.alert.alert-info
+    h5 نمایش فقط یک محصولات
+    p آدرس زیر را در مرورگر وارد کنید و در اخر لینک به جای id کد کاربر مورد نظر را وارد کنید
+    p URL = localhost:3000/prds/prd:id
+  div.alert.alert-info
+    h5 ویرایش محصول
+    p در برنامه postman ادرس و متد را مطابق مشخصات زیر وارد کنید و در قسمت body در postman کادر قرمز رنگ را وارد کرده و فیلد های خواسته شده را پرکنید
+    p Http Method = put
+    p URL = localhost:3000/prds/prd:id
+    img(src='/pics/editprd.png' style='height:300px;')
