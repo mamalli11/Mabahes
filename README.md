@@ -23,17 +23,17 @@
 ## 📝 فهرست مطالب
 
 - [درباره](#about)
+- [دانلود](https://github.com/mamalli11/Mabahes/archive/main.zip)
 - [نحوه شروع](#getting_started)
 - [نحوه استفاده](#usage)
 - [ابزار های مورد نیاز](#built_using)
-
 ## 🧐 درباره <a name = "about"></a>
 
 این پروژه درس مباحث ویژه
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-فقط کافیه پروژه را دانلود کنید و از حالت فشرده خارج کنید.</br>
+فقط کافیه پروژه را  [دانلود](https://github.com/mamalli11/Mabahes/archive/main.zip) کنید و از حالت فشرده خارج کنید.</br>
 در یه محیط توسعه بازکنید
 
 #### پیش نیازها
