@@ -2,6 +2,7 @@ const express = require("express");
 const Validator = require("fastest-validator");
 
 const User = require("../model/users");
+const { isAuth, createToken } = require("../utils/is-auth");
 
 const regiSchema = require("./schemaValid/regiValid");
 const loginSchema = require("./schemaValid/loginValid");
@@ -16,16 +17,17 @@ router.post("/register", async (req, res, next) => {
     const { Name, Phone, Email, Address, Password } = req.body;
 
     try {
-      const userCount =  (await User.findAll()).length;
+      const userCount = (await User.findAll()).length;
       let user;
 
       if (userCount !== 0) {
         user = new User({ Name, Phone, Email, Address, Password });
         await user.save().catch((err) => {
           if (err.parent.code == "ER_DUP_ENTRY") {
-            res.status(500).json({message: "خطا : کاربر ساخته نشد, ایمیل کاربر از قبل موجود است", err: err.parent });
+            res.status(500).json({
+              message: "خطا : کاربر ساخته نشد, ایمیل کاربر از قبل موجود است",
+            });
           }
-
         });
       } else {
         user = new User({
@@ -38,7 +40,11 @@ router.post("/register", async (req, res, next) => {
         });
         await user.save();
       }
-      res.status(201).json({ message: "کاربر جدید ساخته شد", user });
+      const token = await createToken(user.id, user.Email);
+      res.status(201).json({
+        message: "کاربر جدید ساخته شد",
+        token,
+      });
     } catch (err) {
       if (err) throw console.log(err);
       res.status(500).json({ message: "خطا : کاربر ساخته نشد", err });
@@ -55,11 +61,16 @@ router.post("/login", async (req, res) => {
   if (validate === true) {
     const { Email, Password } = req.body;
     await User.findOne({ where: { Email: Email } })
-      .then((r) => {
+      .then(async (r) => {
         if (Password === r.dataValues.Password) {
-          res.status(201).json({ message: "کاربر وارد شد." });
+          res.status(201).json({
+            message: "کاربر وارد شد.",
+            token: await createToken(r.dataValues.id, r.dataValues.Email),
+          });
         } else {
-          res.status(500).json({ message: "ایمیل یا پسورد اشتباه وارد شده است" });
+          res
+            .status(500)
+            .json({ message: "ایمیل یا پسورد اشتباه وارد شده است" });
         }
       })
       .catch((e) => {
@@ -71,12 +82,12 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/", isAuth, async (req, res) => {
   const users = await User.findAll();
   res.render("users", { users });
 });
 
-router.get("/user:id", async (req, res) => {
+router.get("/user:id", isAuth, async (req, res) => {
   const ID = req.params.id.replace(":", "");
 
   if (ID !== "" && ID !== " " && !isNaN(ID)) {

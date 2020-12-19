@@ -1,9 +1,10 @@
 @font-face {
   font-family: "Vazir";
-  src: url("../fonts/Vazir.eot");
-  src: local("../fonts/Vazir"), url("../fonts/Vazir.woff") format("woff"),
-    url("../fonts/Vazir.ttf") format("truetype"),
-
+  src: url("../fonts/Vazir.eot") format("eot"),
+    url("../fonts/Vazir.woff") format("woff"),
+    url("../fonts/Vazir.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 body {
   direction: rtl;
@@ -11,9 +12,11 @@ body {
   font-size: 14px;
   padding: 50px;
 }
-
+b {
+  color: rgb(238, 20, 20) !important;
+}
 a {
-  color: #00b7ff;
+  color: #ff5100 !important;
 }
 code {
   font-family: monospace !important;

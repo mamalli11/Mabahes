@@ -3,16 +3,18 @@ const Validator = require("fastest-validator");
 
 const Products = require("./../model/products");
 const upload = require("../utils/multer");
+const { isAuth } = require("../utils/is-auth");
 
 const newPrdValid = require("./schemaValid/newPrdValid");
 
 var router = express.Router();
 const v = new Validator();
 
-router.post("/", upload.single("Image"), async (req, res, next) => {
+router.post("/",isAuth, upload.single("Image"), async (req, res, next) => {
   try {
     const validate = v.validate(req.body, newPrdValid);
     if (validate === true) {
+      
       const { Name, Description, Price, Weight } = req.body;
       const Image = `images/${req.file.filename}`;
 
@@ -69,7 +71,7 @@ router.get("/prd:id", async (req, res) => {
   }
 });
 
-router.put("/prd:id", async (req, res) => {
+router.put("/prd:id",isAuth, async (req, res) => {
   const ID = req.params.id.replace(":", "");
   if (ID !== "" && ID !== " " && !isNaN(ID)) {
     await Products.update(req.body, { where: { id: ID } })
