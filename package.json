@@ -1,7 +1,10 @@
 {
   "name": "mabahes",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "author": "MJ Majidi",
+  "description": "Mabahes Project",
+  "license": "MIT",
   "scripts": {
     "start": "nodemon ./bin/www"
   },
